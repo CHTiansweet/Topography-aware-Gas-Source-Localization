@@ -1,27 +1,50 @@
-Gas Source Localization
+# Topography-aware Gas Source Localization
 =====
 This is the repository of paper _Deep Learning Based Topography Aware Gas Source localization with Mobile Robots_
 https://github.com/CHTiansweet/CHTian/blob/master/files/GSL_preprint.pdf
 ![image](https://github.com/CHTiansweet/Topography-aware-Gas-Source-Localization/blob/main/overallperformance.png)
 
-This repository includes four parts：
 
+This repository includes four parts:
 
-**Data**: Tha data collected for training, one epoch means a full experiment form starting to the gas source. Normalcondintion includes epoches with stable wind direction, windchange includes epoches from evaluation epoch with changing wind driection in one epoch:  
-    >Map[n] is the occpuancy grid map at the time of plume encounter n  
-    >Wind[n] is observed wind direction at the time and location of plume encounter n, wind data is in the format of (x,q), where x is speed(m/s), q is the clockwise rotation Angle pointed by the robot(°).  
-    >baselink_to_map_[n], baselink_to_odom_[n], odom_to_map_[n] are coordinates transformation at the time and location of plume encounter n, indicating robot's location and pose.  
-    >gassource_baselink_to_map, gassource_baselink_to_odom, gassource_odom_to_map are coordinates transformation of gas source, indicating real gas source location.    
-      
+---
 
+## **1. Data**
 
-**Train**: The ipynb file for training and evaluation process, all origin code is run on colab,   
-     > labeler: the code used to labeling the data and generate ground truth, referring to the "loss function with dynamic detection range" part in our paper.  
-      >GSL_train: the main training part, including defination of dataset class  
-      >GSLinference: the evaluation part of model  
-      >resultvis: the visualization module based on the result of GSLinference  
-      >For detailed Notes, please refer to GSL_train   
+The data collected for training. One epoch means a full experiment from starting point to the gas source.
 
-**Model**: The model described in our paper, several models have slite difference  
+- `normalcondition/`: contains epochs with stable wind direction  
+- `windchange/`: contains epochs with changing wind direction within one epoch  
 
-**Robotcontrol**: The code used during data collection, including data filter and human-in-the-loop control  
+Each epoch includes the following files:
+
+> - `Map[n]`: Occupancy grid map at the time of plume encounter *n*  
+> - `Wind[n]`: Observed wind direction at the time and location of plume encounter *n*. Wind data is formatted as `(x, q)`, where:
+>     - `x`: wind speed (m/s)  
+>     - `q`: clockwise rotation angle (°) pointed by the robot  
+> - `baselink_to_map_[n]`, `baselink_to_odom_[n]`, `odom_to_map_[n]`: Coordinate transformations at the time and location of plume encounter *n*, indicating the robot's location and pose  
+> - `gassource_baselink_to_map`, `gassource_baselink_to_odom`, `gassource_odom_to_map`: Coordinate transformations of the gas source, indicating the ground-truth gas source location  
+
+---
+
+## **2. Train**
+
+IPython Notebook files for training and evaluation. All original code runs on Google Colab.
+
+- `labeler.ipynb`: Labels the data and generates ground truth (see "loss function with dynamic detection range" in our paper)  
+- `GSL_train.ipynb`: Main training module, including dataset class definition  
+- `GSLinference.ipynb`: Evaluation module for the model  
+- `resultvis.ipynb`: Visualization module based on the output of `GSLinference`  
+- For detailed notes and comments, please refer to `GSL_train.ipynb`  
+
+---
+
+## **3. Model**
+
+The models described in our paper. Several versions are included with slight differences.
+
+---
+
+## **4. Robotcontrol**
+
+Code used during data collection, including data filtering and human-in-the-loop control mechanisms.
