@@ -1,0 +1,17 @@
+header: 
+  seq: 0
+  stamp: 
+    secs: 1723826554
+    nsecs: 725319300
+  frame_id: "map"
+child_frame_id: "odom"
+transform: 
+  translation: 
+    x: -0.21171544907933093
+    y: -0.09269799585763483
+    z: 0.0
+  rotation: 
+    x: 0.0
+    y: 0.0
+    z: 0.0005761710008693302
+    w: 0.9999998340134751

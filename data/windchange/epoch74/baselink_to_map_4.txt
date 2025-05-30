@@ -1,0 +1,17 @@
+header:
+  seq: 0
+  stamp:
+    secs: 0
+    nsecs: 0
+  frame_id: "map"
+child_frame_id: "base_link"
+transform:
+  translation:
+    x: 4.137328049301594
+    y: -2.758411258050757
+    z: 0.0
+  rotation:
+    x: 0.0
+    y: 0.0
+    z: -0.99822163830528
+    w: 0.05961175067990282
